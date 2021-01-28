@@ -1,0 +1,43 @@
+---
+- hosts: wiredcraft-devops-gcp
+  become: yes
+  become_user: jahan
+  tasks:
+  - name: Copy docker-compose file
+    ansible.builtin.copy:
+      src: ../docker-compose.yml
+      dest: /home/jahan/docker-compose.yml
+      owner: jahan
+      group: jahan
+      mode: '0644'
+  - name: "docker compose down"
+    shell:
+      "sudo docker-compose down"
+  - name: "Publish the docker registry."
+    shell:
+      "sudo docker-compose -f docker-compose.yml up -d"
+
+
+
+#- hosts: wiredcraft-devops-gcp
+#  tasks:
+#    - name: docker registry
+#      docker_image:
+#        version: '3'
+#        services:
+#          docker-registry:
+#            - image: 'registry:2'
+#            - container_name: docker-registry-wiredcraft
+##            - ports: "5000:5000"
+#            - restart: always
+#            - volumes:
+#              - ./- volume:/var/lib/registry
+#
+#          docker-registry-ui:
+#            - image: 'konradkleine/docker-registry-frontend:v2'
+#            - container_name: docker-registry-ui-wiredcraft
+#            - ports: "8080:80"
+#            - environment:
+#                - ENV_DOCKER_REGISTRY_HOST: docker-registry-wiredcraft
+#                - ENV_DOCKER_REGISTRY_PORT: 1500
+#

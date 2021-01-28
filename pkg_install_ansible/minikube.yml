@@ -1,0 +1,32 @@
+- hosts: wiredcraft-devops-gcp
+  become: true
+  tasks:
+    - name: install dependencies
+      apt:
+        name: "{{item}}"
+        state: present
+        update_cache: yes
+      loop:
+        - apt-transport-https
+        - conntrack
+    - name: install virtualbox
+      shell:
+        "sudo apt-get install -y qemu-kvm qemu virt-manager virt-viewer libvirt-bin"
+    - name: get minikube
+      shell:
+        "wget https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64"
+    - name: minikube filemode
+      shell:
+         "sudo chmod +x minikube-linux-amd64"
+    - name: mv mini file
+      shell:
+        "sudo mv minikube-linux-amd64 /usr/local/bin/minikube"
+    - name: k8s install
+      shell:
+        "curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl"
+    - name: script mode
+      shell:
+        "sudo chmod +x ./kubectl"
+    - name: mv file
+      shell:
+        "sudo mv ./kubectl /usr/local/bin/kubectl"
