@@ -15,9 +15,8 @@ jobs:
     steps:
     - name: Build the Docker image
     - uses: actions/checkout@v2
-      with:
-        github-token: ${{ secrets.TOKEN }}
-        repository: jahanxb/hello_world
-        dockerfile: Dockerfile
-        run: docker build . --file Dockerfile --tag hello-api:$(date +%s)
+    - run: docker build . --tag hello-api/wiredcraft:1.0.0
+    - name: docker push
+      run: |
+       echo "here we push it"
     
