@@ -19,6 +19,6 @@ jobs:
     - name: docker push image
       run: |
         docker push server.jahanxb.xyz/hello_api_v1:v5.1
-#        echo "need to push to inseas  cuske  "
+#        echo "need to push to inseas cuske  "
          
          
