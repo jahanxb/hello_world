@@ -11,5 +11,5 @@ jobs:
     - uses: actions/checkout@v2
     - name: docker build python
       run: |
-        docker build ./python -t hello-api/python:1.0.0
+        docker build . -t hello-api/python:1.0.0
     
