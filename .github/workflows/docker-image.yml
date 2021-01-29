@@ -11,5 +11,10 @@ jobs:
     - uses: actions/checkout@v2
     - name: docker build python
       run: |
-        docker build . -t hello-api/python:1.0.0
-    
+        docker build . -t hello-api/wiredcraft:1.0.0
+    - name: docker tag
+      run: |
+        docker tag hello-api/wiredcraft:1.0.0 35.193.64.108:5000/hello_api:v2.1
+    - name: docker push image
+      run: |
+        docker push 35.193.64.108:5000/hello_api:v2.1
