@@ -1,22 +1,15 @@
-name: Docker Image CI
+name: Docker Series Builds
 
 on:
   push:
     branches: [ master ]
-  pull_request:
-    branches: [ master ]
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
-
     steps:
-    - name: Build the Docker image
     - uses: actions/checkout@v2
-    - run: docker build . --tag hello-api/wiredcraft:1.0.0
-    - name: docker push
+    - name: docker build python
       run: |
-       echo "here we push it"
+        docker build ./python -t hello-api/python:1.0.0
     
