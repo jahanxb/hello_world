@@ -15,9 +15,8 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-#      run: docker build . --file ../Dockerfile --tag hello-api:$(date +%s)
-      with:
-            dockerfile: Dockerfile
-            repository: jahanxb/hello_world
-            tag_with_ref: true   
-            run: docker build . --file Dockerfile --tag hello-api:$(date +%s)
+    - with:
+           repository: jahanxb/hello_world
+           dockerfile: Dockerfile
+    - run: docker build . --file Dockerfile --tag hello-api:$(date +%s)
+   
