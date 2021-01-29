@@ -12,13 +12,13 @@ jobs:
     
     - name: docker build python
       run: |
-        docker build . -t hello-api/wiredcraft:1.0.0
+        docker build . -t hello-api/wiredcraft:1.0.1
     - name: docker tag
       run: |
-        docker tag hello-api/wiredcraft:1.0.0 server.jahanxb.xyz/hello_api:v4.0
+        docker tag hello-api/wiredcraft:1.0.1 server.jahanxb.xyz/hello_api:v5.0
     - name: docker push image
       run: |
-        docker push server.jahanxb.xyz/hello_api:v4.0
+        docker push server.jahanxb.xyz/hello_api:v5.0
 #        echo "need to push to inseas cuse  "
          
          
