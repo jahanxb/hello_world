@@ -11,7 +11,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: insecure registry
       run: |
-          ls
+          DOCKER_OPTS='--insecure-registry 35.193.64.108:5000'
     - name: docker build python
       run: |
         docker build . -t hello-api/wiredcraft:1.0.0
@@ -20,6 +20,7 @@ jobs:
         docker tag hello-api/wiredcraft:1.0.0 35.193.64.108:5000/hello_api:v2.0
     - name: docker push image
       run: |
-        echo "need to push to insecure"
-#        docker push 35.193.64.108:5000/hello_api:v2.0
+        docker push 35.193.64.108:5000/hello_api:v2.0
+#        echo "need to push to insecure"
+         
          
