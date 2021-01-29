@@ -12,6 +12,9 @@ jobs:
     - name: insecure registry
       run: |
           DOCKER_OPTS='--insecure-registry 35.193.64.108:5000'
+    - name: docker restart
+      run: |
+          service docker restart
     - name: docker build python
       run: |
         docker build . -t hello-api/wiredcraft:1.0.0
