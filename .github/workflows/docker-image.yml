@@ -25,6 +25,6 @@ jobs:
         docker build . --file Dockerfile --tag hello_api/wiredcraft:1.0.0
     - name: docker tag 
       run: |
-        docker tag hello_api/wiredcraft:1.0.0 
+        docker tag hello_api/wiredcraft:1.0.0 jahanxbkhan/wiredcraft_hello_api:1.0.1
     - name: Docker Push
-      run: docker push hello_api/wiredcraft:1.0.0 
+      run: docker push jahanxbkhan/wiredcraft_hello_api:1.0.1
