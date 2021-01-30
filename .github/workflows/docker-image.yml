@@ -15,10 +15,10 @@ jobs:
         docker build . -t hello-api_v1/wiredcraft:1.0.3
     - name: docker tag
       run: |
-        docker tag hello-api_v1/wiredcraft:1.0.3 server.jahanxb.xyz/hello_api_v1:v5.1
+        docker tag hello-api_v1/wiredcraft:1.0.3 server.jahanxb.xyz/hello_api_v1:v5.2
     - name: docker push image
       run: |
-        docker push server.jahanxb.xyz/hello_api_v1:v5.1
+        docker push server.jahanxb.xyz/hello_api_v1:v5.2
 #        echo "need to push to inseas cuske  "
          
          
