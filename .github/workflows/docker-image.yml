@@ -9,16 +9,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    
+    - name: docker login
+      env:
+        DOCKER_USER: ${{ secrets.DOCKER_USER }}
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+        run:  |
+          docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
     - name: docker build python
       run: |
-        docker build . -t hello-api_v1/wiredcraft:1.0.3
+        docker build . -t hello-api/wiredcraft:$(date +%s)
     - name: docker tag
       run: |
-        docker tag hello-api_v1/wiredcraft:1.0.3 35.193.64.108:5000/hello_api_v1:v5.4
+        docker tag -t hello-api/wiredcraft:$(date +%s)
     - name: docker push image
       run: |
-        docker push 35.193.64.108:5000/hello_api_v1:v5.4
-#        echo "need to push to inseas cuske  "
+        docker push ${{secrets.DOCKER_USER}}/wiredcraft_hello_api
+#        echo "push image to dockerhub  "
          
          
