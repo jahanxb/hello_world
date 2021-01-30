@@ -24,4 +24,4 @@ jobs:
       run: docker build . --file Dockerfile --tag hello_api/wiredcraft:1.0.0
       
     - name: Docker Push
-      run: docker push ${{secrets.DOCKER_USER}}/hello_api/wiredcraft:1.0.0
+      run: docker push ${{secrets.DOCKER_USER}}/wiredcraft_hello_api:1.0.0
