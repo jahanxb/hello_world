@@ -1,26 +1,27 @@
-name: Docker Series Builds
+name: Docker Image CI
 
 on:
   push:
     branches: [ master ]
+  pull_request:
+    branches: [ master ]
 
 jobs:
+
   build:
+
     runs-on: ubuntu-latest
+
     steps:
     - uses: actions/checkout@v2
     - name: docker login
       env:
-        DOCKER_USER: ${{ secrets.DOCKER_USER }}
-        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-        run:  |
-          docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
-    - name: docker build python
+        DOCKER_USER: ${{secrets.DOCKER_USER}}
+        DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
       run: |
-        docker build . -t hello-api/wiredcraft:$(date +%s)
-    - name: docker push image
-      run: |
-        docker push ${{secrets.DOCKER_USER}}/wiredcraft_hello_api
-#        echo "push image to dockerhub  "
-         
-         
+        docker login -u $DOCKER_USER -p $DOCKER_PASSWORD 
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag hello_api/v:$(date +%s)
+      
+    - name: Docker Push
+      run: docker push ${{secrets.DOCKER_USER}}/hello_api/v:$(date +%s)
