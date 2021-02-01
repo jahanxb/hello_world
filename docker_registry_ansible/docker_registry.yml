@@ -1,5 +1,5 @@
 ---
-- hosts: wiredcraft-devops-gcp
+- hosts: wiredcraft-docker-registry
   become: yes
   become_user: jahan
   tasks:

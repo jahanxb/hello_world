@@ -111,3 +111,10 @@ venv.bak/
 
 # ignore ds_store
 .DS_Store
+
+#tar and exe file
+terraform.exe
+.tfstate
+.tfstate.*
+.terraform.lock.hcl
+.terraform

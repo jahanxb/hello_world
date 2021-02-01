@@ -7,7 +7,7 @@ services:
     image: registry:2
     container_name: docker-registry-wiredcraft
     ports:
-        - "1500:1500"
+        - "5000:5000"
     restart: always
     volumes:
         - ./- volume:/var/lib/registry
