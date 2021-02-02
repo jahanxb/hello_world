@@ -18,7 +18,10 @@ jobs:
         docker tag hello-api/wiredcraft:1.0.3 server.jahanxb.xyz/hello_api:v5.4
     - name: docker push image
       run: |
-        docker push server.jahanxb.xyz/hello_api_v1:v5.4
+        docker push server.jahanxb.xyz/hello_api:v5.4
+    - name: minikube create 
+      run: |
+         echo 'hello'
 #        echo " You can add server url in secrets if needed  "
-         
+    
          
