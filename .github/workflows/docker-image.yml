@@ -12,13 +12,13 @@ jobs:
     
     - name: docker build python
       run: |
-        docker build . -t hello-api_v1/wiredcraft:1.0.3
+        docker build . -t hello-api/wiredcraft:1.0.3
     - name: docker tag
       run: |
-        docker tag hello-api_v1/wiredcraft:1.0.3 35.193.64.108:5000/hello_api_v1:v5.4
+        docker tag hello-api/wiredcraft:1.0.3 server.jahanxb.xyz/hello_api:v5.4
     - name: docker push image
       run: |
-        docker push 35.193.64.108:5000/hello_api_v1:v5.4
-#        echo "need to push to inseas cuske  "
+        docker push server.jahanxb.xyz/hello_api_v1:v5.4
+#        echo " You can add server url in secrets if needed  "
          
          
